@@ -1,0 +1,9 @@
+Task 1
+Q1. Input: Keypad
+    Output: Screen
+
+Q2. Double checking
+
+Q3. Validation check: Range check: The pin should not be more than 4 digits
+
+Task 2

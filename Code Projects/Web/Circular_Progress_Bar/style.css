@@ -1,0 +1,140 @@
+:root{
+    --clr: rgb(72, 255, 231);
+    --num: 75;
+    --gradient: linear-gradient(to left, rgb(255, 36, 36), rgb(255, 115, 0), yellow, rgb(0, 212, 0));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container{
+    height: 650px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 40px;
+    background-color: #222;
+}
+
+.container .card{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background-color: #2e2e2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .card .circularBar{
+    width: 170px;
+    height: 170px;
+}
+
+.container .card .circularBar svg{
+    width: 100%;
+    height: 100%;
+    transform: rotate(270deg);
+}
+
+.container .card .circularBar svg circle{
+    fill: transparent;
+    stroke-width: 3px;
+    stroke: black;
+}
+
+.container .card .circularBar svg circle:nth-child(2)
+{
+    stroke: var(--clr);
+    stroke-dasharray: 524;
+    stroke-dashoffset: calc(524 - (524 * var(--num)) / 100);
+    opacity: 0;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 2.5s;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.dot{
+    position: absolute;
+    inset: 5px;
+    z-index: 10;
+    transform: rotate(calc(3.6deg * var(--num)));
+    animation: animateDot 2s linear  forwards ; 
+}
+
+@keyframes animateDot{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(calc(3.6deg * var(--num)));
+    }
+}
+
+.dot::before{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--clr);
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+
+}
+
+.number{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 2.5s;
+}
+
+.number h2{
+    color: white;
+    font-size: 2.5em;
+    font-weight: 500;
+}
+
+.number h2 span{
+    font-size: 0.5em;
+    font-weight: 100;
+}
+
+.number p{
+    color: white;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
